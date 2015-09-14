@@ -536,6 +536,7 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
             conn.timeout = timeout_obj.connect_timeout
 
             is_new_proxy_conn = self.proxy is not None and not getattr(conn, 'sock', None)
+            self.proxy_headers = headers
             if is_new_proxy_conn:
                 self._prepare_proxy(conn)
 
